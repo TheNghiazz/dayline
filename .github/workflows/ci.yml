@@ -96,7 +96,9 @@ jobs:
           for appearance in light dark; do
             xcrun simctl ui "$DEV" appearance "$appearance"
             xcrun simctl terminate "$DEV" "$BUNDLE" || true
-            xcrun simctl launch "$DEV" "$BUNDLE" -AppleLanguages "(vi)" -AppleLocale "vi_VN"
+            xcrun simctl launch "$DEV" "$BUNDLE" \
+              -AppleLanguages "(vi)" -AppleLocale "vi_VN" \
+              -uiTestReset -uiTestSeed -uiTestLocale vi
             sleep 4
             xcrun simctl io "$DEV" screenshot "shot-today-$appearance.png"
           done

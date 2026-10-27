@@ -1,12 +1,13 @@
 import SwiftUI
 import WidgetKit
 
-/// P0: công cụ duy nhất để debug khi không có Xcode.
-/// P6 mở rộng thành 6 dòng trạng thái + xuất log.
+/// Công cụ debug khi không có Xcode. P6 mở rộng thêm log + export.
 struct DiagnosticsView: View {
     @State private var isShared = AppGroup.isAvailable
     @State private var snapshot = ProbeStore.sharedSnapshot
     @State private var lastResult: String?
+
+    private var store: DataStore { DataStore.shared }
 
     var body: some View {
         List {
@@ -14,6 +15,18 @@ struct DiagnosticsView: View {
                 LabeledContent("ID", value: AppGroup.identifier)
                 LabeledContent("Trạng thái", value: isShared ? "Đã kết nối" : "Không khả dụng")
                 LabeledContent("Probe", value: snapshot == nil ? "Chưa có" : "Đã đọc được")
+            }
+
+            Section("Dữ liệu") {
+                LabeledContent("Lưu trữ", value: store.storageLabel)
+                LabeledContent("Công việc", value: "\(store.counts.tasks)")
+                LabeledContent("Ghi chú", value: "\(store.counts.notes)")
+
+                if let failure = store.failureMessage {
+                    Text(failure)
+                        .font(.footnote)
+                        .foregroundStyle(.red)
+                }
             }
 
             Section("Đường dẫn container") {

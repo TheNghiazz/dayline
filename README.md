@@ -10,7 +10,7 @@ App iOS cá nhân: ghi chú + việc cần làm theo giờ trong ngày, có widg
 
 ## Trạng thái
 
-Đang ở **P0**: kiểm tra hạ tầng (build, cài, widget extension, App Group).
+Đang ở **P2**: data layer (SwiftData + repository). UI Today hiện vẫn dùng dữ liệu mẫu — P3 sẽ nối vào repository.
 
 Lộ trình đầy đủ: `IMPLEMENTATION_PLAN.md`. Bộ UI đã lọc: `design/screen-inventory.md`.
 
@@ -67,6 +67,16 @@ Widget P0 hỗ trợ `accessoryRectangular` (Lock Screen) và `systemSmall` (Hom
 - `App/DesignSystem/`: `ProgressRing`, `TaskRow` (4 state: current/upcoming/done/overdue), `SectionHeader`, `DLCard`, `DLDivider`, `TodayEmptyState`, `DLFloatingButtonStyle`, `DLPrimaryButtonStyle`
 - `App/Features/Today/`: timeline chia ĐANG LÀM / SẮP TỚI / ĐÃ XONG (thu gọn được), ring tiến độ, tick done có haptic, empty state, nút "+ Thêm việc"
 - Bỏ avatar, bỏ chữ lặp, bỏ tab Thống kê theo `design/screen-inventory.md`
+
+## Đã dựng ở P2 (data layer)
+
+- `App/Data/Models/`: `TaskItem`, `Note` (SwiftData `@Model`), `Priority`, `RecurrenceRule` (JSON string trong `recurrenceRaw`), `TaskDraft`/`NoteDraft`
+- `App/Data/Persistence/DataStore.swift`: container thử lần lượt **App Group → local → memory**, không `try!`/`fatalError`; `storageLabel` hiện ở Chẩn đoán
+- `App/Data/Repository/`: `TaskRepository`/`NoteRepository` + SwiftData impl + `Mock*Repository`; mỗi lần ghi phát `.daylineDataChanged`
+- `App/Data/Support/`: `SeedData` (7 task + 5 note, giờ tương đối), `LaunchOptions` (`-uiTestSeed`, `-uiTestReset`, `-uiTestLocale`), `DataTransfer` (export/import JSON, `schemaVersion: 1`, chống trùng `id`)
+- Test: repository task/note, export/import, `RecurrenceRule` round-trip
+
+> Model đặt trong target app (không phải `Shared/`) để widget extension **không** link SwiftData — widget chỉ đọc snapshot JSON (P7).
 
 ## Ghi chú dev
 

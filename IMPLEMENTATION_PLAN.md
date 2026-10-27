@@ -108,11 +108,14 @@ Việc làm:
 
 ## P2 — Data layer + mock/seed
 
-1. `Shared/Models`: `TaskItem`, `Note`, `RecurrenceRule`, `Priority`, `SharedSnapshot` (theo plan backend §3).
-2. `TaskRepository` / `NoteRepository` protocol + `SwiftDataTaskRepository` + `MockTaskRepository` (in-memory, seed 7 task + 5 note).
-3. `SeedData.swift` đọc `-uiTestSeed` / `-uiTestReset`.
-4. `SharedContainer` mở SwiftData tại App Group URL nếu có, fallback local.
-5. Unit test round-trip export/import JSON (`schemaVersion: 1`).
+> Trạng thái: **code xong**, chờ CI xác nhận.
+
+1. ~~`Shared/Models`~~ → `App/Data/Models`: `TaskItem`, `Note`, `RecurrenceRule`, `Priority`, `TaskDraft`/`NoteDraft`.
+   **Lệch kế hoạch:** model nằm trong target app (không phải `Shared`) để widget extension không phải link SwiftData.
+2. `TaskRepository` / `NoteRepository` protocol + `SwiftData*Repository` + `Mock*Repository` (seed 7 task + 5 note).
+3. `SeedData.swift` + `LaunchOptions` đọc `-uiTestSeed` / `-uiTestReset` / `-uiTestLocale`.
+4. `DataStore` mở SwiftData tại App Group URL nếu có, fallback local → memory → `.failed` (không `try!`).
+5. Unit test round-trip export/import JSON (`schemaVersion: 1`), repository, `RecurrenceRule`.
 
 **Nghiệm thu:** [ ] app chạy với mock, [ ] SwiftData lưu qua lần mở thứ 2, [ ] test xanh.
 
