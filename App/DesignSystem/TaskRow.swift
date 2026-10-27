@@ -67,7 +67,7 @@ struct TaskRow: View {
                 .fill(state == .done ? DLColor.accent : Color.clear)
 
             Circle()
-                .strokeBorder(state == .done ? Color.clear : DLColor.border, lineWidth: 1.5)
+                .strokeBorder(state == .done ? Color.clear : DLColor.controlLine, lineWidth: 1.5)
 
             if state == .done {
                 Image(systemName: "checkmark")

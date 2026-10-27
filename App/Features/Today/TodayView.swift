@@ -61,7 +61,7 @@ struct TodayView: View {
             }
             .background { DLColor.bg.ignoresSafeArea() }
             .safeAreaInset(edge: .bottom) {
-                addButton
+                addBar
             }
             .toolbar(.hidden, for: .navigationBar)
             .task {
@@ -102,7 +102,8 @@ struct TodayView: View {
 
     // MARK: - Pieces
 
-    private var addButton: some View {
+    /// Nền đặc để nội dung không bị nhìn xuyên qua nút khi cuộn.
+    private var addBar: some View {
         Button {
             editorTarget = EditorTarget(task: nil, defaultStart: Self.nextSlot(after: store.now))
         } label: {
@@ -110,7 +111,9 @@ struct TodayView: View {
         }
         .buttonStyle(DLFloatingButtonStyle())
         .padding(.horizontal, DLSpace.margin)
+        .padding(.top, DLSpace.s)
         .padding(.bottom, DLSpace.s)
+        .background(DLColor.bg)
     }
 
     private func header(done: Int, total: Int) -> some View {

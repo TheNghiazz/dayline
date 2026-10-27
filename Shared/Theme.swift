@@ -32,6 +32,8 @@ enum DLColor {
     static let text = Color(light: 0x1A1A1A, dark: 0xF2F2F2)
     static let text2 = Color(light: 0x6B6B6B, dark: 0xA0A5A1)
     static let border = Color(light: 0xE6E6E2, dark: 0x2E322E)
+    /// Viền control nhỏ (checkbox, ô chưa chọn) — đậm hơn `border` để thấy rõ ở dark mode.
+    static let controlLine = Color(light: 0xCFCFC9, dark: 0x4B504B)
 
     static let accent = Color(light: 0x2F6B4F, dark: 0x6DBE97)
     static let accentHigh = Color(light: 0x529975, dark: 0x8CD3AF)
