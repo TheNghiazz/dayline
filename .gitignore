@@ -1,0 +1,28 @@
+# Build outputs
+build/
+DerivedData/
+Payload/
+*.ipa
+*.xcarchive
+*.xcresult
+
+# Xcode / XcodeGen generated
+Dayline.xcodeproj/
+Support/App-Info.plist
+Support/Widget-Info.plist
+Support/Dayline.entitlements
+Support/DaylineWidgets.entitlements
+xcuserdata/
+*.xcuserstate
+*.xcscmblueprint
+
+# Swift Package Manager
+.swiftpm/
+.build/
+
+# CI screenshots
+shot-*.png
+test.xcresult
+
+# macOS
+.DS_Store

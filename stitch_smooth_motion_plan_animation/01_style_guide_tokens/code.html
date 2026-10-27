@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+
+<html lang="vi"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" name="viewport"/><meta content="mobile_tab" name="shell-type"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=SF+Pro+Display:wght@100..900&family=SF+Pro+Text:wght@100..900&display=swap" rel="stylesheet"/><style>@layer base{html,body{width:100%;margin:0;padding:0;}body{overscroll-behavior-y:none;-webkit-tap-highlight-color:transparent;}.pb-safe{padding-bottom:max(env(safe-area-inset-bottom,34px),34px);}.pt-safe{padding-top:max(env(safe-area-inset-top,59px),59px);}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config = { darkMode: "class", theme: { extend: { "colors": { "error": "#ba1a1a", "on-primary-container": "#aae9c6", "secondary-fixed": "#dce5df", "on-tertiary-container": "#ffd1d1", "on-primary-fixed": "#002113", "on-error": "#ffffff", "tertiary-fixed": "#ffdad9", "on-surface": "#1c1b1b", "surface-container-high": "#eae7e7", "secondary-container": "#dce5df", "on-secondary-container": "#5e6662", "surface-container-highest": "#e5e2e1", "primary": "#125238", "inverse-primary": "#96d4b2", "inverse-on-surface": "#f3f0ef", "on-tertiary": "#ffffff", "surface": "#fcf9f8", "outline-variant": "#c0c9c1", "primary-fixed": "#b1f0cd", "tertiary-container": "#8e4e50", "outline": "#707972", "on-surface-variant": "#404943", "primary-container": "#2f6b4f", "surface-variant": "#e5e2e1", "tertiary-fixed-dim": "#ffb3b4", "secondary": "#58605c", "background": "#fcf9f8", "error-container": "#ffdad6", "surface-container-low": "#f6f3f2", "primary-fixed-dim": "#96d4b2", "on-tertiary-fixed-variant": "#6f3538", "surface-container-lowest": "#ffffff", "on-secondary": "#ffffff", "secondary-fixed-dim": "#c0c9c3", "tertiary": "#723739", "inverse-surface": "#313030", "on-error-container": "#93000a", "on-tertiary-fixed": "#390b0f", "on-background": "#1c1b1b", "on-primary": "#ffffff", "surface-container": "#f0eded", "surface-tint": "#2d694d", "surface-bright": "#fcf9f8", "on-secondary-fixed-variant": "#404945", "surface-dim": "#dcd9d9", "on-secondary-fixed": "#151d1a", "on-primary-fixed-variant": "#105137" }, "borderRadius": { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px" }, "spacing": { "margin": "20px", "space-xl": "24px", "space-lg": "16px", "space-3xl": "48px", "space-2xl": "32px", "gutter": "12px", "space-sm": "8px", "space-xs": "4px", "space-md": "12px" }, "fontFamily": { "large-title": ["SF Pro Display"], "title": ["SF Pro Display"], "body-emphasis": ["SF Pro Text"], "section-header": ["SF Pro Text"], "body": ["SF Pro Text"], "time": ["SF Pro Text"], "meta": ["SF Pro Text"] }, "fontSize": { "large-title": ["28px", { "lineHeight": "34px", "fontWeight": "700" }], "title": ["22px", { "lineHeight": "28px", "fontWeight": "600" }], "body-emphasis": ["17px", { "lineHeight": "22px", "fontWeight": "600" }], "section-header": ["13px", { "lineHeight": "18px", "letterSpacing": "0.6px", "fontWeight": "600" }], "body": ["17px", { "lineHeight": "22px", "fontWeight": "400" }], "time": ["15px", { "lineHeight": "20px", "fontWeight": "600" }], "meta": ["13px", { "lineHeight": "18px", "fontWeight": "400" }] } } } };</script><style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head><body class="bg-background font-body text-body text-on-surface flex flex-col min-h-screen selection:bg-primary-fixed"><header class="fixed top-0 inset-x-0 z-50 bg-background/85 backdrop-blur-xl pt-safe shadow-[0_1px_8px_rgba(0,0,0,0.02)]"><div class="h-14 px-margin flex items-center justify-between"><h1 class="font-title text-title text-on-surface tracking-tight">Cài Đặt</h1><div class="flex items-center gap-space-sm"><div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center shrink-0"><span class="material-symbols-outlined text-on-primary text-[18px]">person</span></div></div></div></header><main class="flex flex-col relative w-full px-margin pt-14 pb-space-3xl bg-background"><div class="flex flex-col w-full gap-space-2xl">
+<!-- Header Overview -->
+<div class="flex flex-col gap-space-xs pt-space-xs">
+<div class="flex items-center justify-between">
+<span class="inline-flex items-center gap-space-xs px-2.5 py-1 rounded-full bg-primary-fixed text-on-primary-fixed text-meta font-meta">
+<span class="w-1.5 h-1.5 rounded-full bg-primary animate-pulse"></span>
+        v2.4 System Spec
+      </span>
+<span class="font-meta text-meta text-on-surface-variant">iOS 18 Native</span>
+</div>
+<h2 class="font-large-title text-large-title text-on-surface tracking-tight mt-1">Dayline Style Guide</h2>
+<p class="font-meta text-meta text-secondary">iOS 18 Native Tokens & Motion Spec</p>
+</div>
+<!-- Section 1: Color Tokens Grid -->
+<section class="flex flex-col gap-space-md">
+<div class="flex items-center justify-between">
+<h3 class="font-section-header text-section-header uppercase tracking-wider text-on-surface-variant">01 • Bảng Màu Chuẩn (Color Tokens)</h3>
+<span class="font-meta text-meta text-secondary">Tonal System</span>
+</div>
+<!-- Core Swatches Grid -->
+<div class="grid grid-cols-2 gap-space-sm">
+<!-- bg token -->
+<div class="flex items-center gap-space-sm p-space-sm rounded-xl bg-surface-container-lowest shadow-sm">
+<div class="w-9 h-9 rounded-lg bg-[#F7F7F5] shadow-inner shrink-0"></div>
+<div class="flex flex-col min-w-0">
+<span class="font-body-emphasis text-[14px] text-on-surface leading-tight">Nền (bg)</span>
+<span class="font-time text-[12px] text-secondary">#F7F7F5</span>
+</div>
+</div>
+<!-- surface token -->
+<div class="flex items-center gap-space-sm p-space-sm rounded-xl bg-surface-container-lowest shadow-sm">
+<div class="w-9 h-9 rounded-lg bg-surface shadow-inner shrink-0"></div>
+<div class="flex flex-col min-w-0">
+<span class="font-body-emphasis text-[14px] text-on-surface leading-tight">Bề mặt (surface)</span>
+<span class="font-time text-[12px] text-secondary">#FFFFFF</span>
+</div>
+</div>
+<!-- surface-2 token -->
+<div class="flex items-center gap-space-sm p-space-sm rounded-xl bg-surface-container-lowest shadow-sm">
+<div class="w-9 h-9 rounded-lg bg-surface-container-high shrink-0"></div>
+<div class="flex flex-col min-w-0">
+<span class="font-body-emphasis text-[14px] text-on-surface leading-tight">Phụ 2 (surface-2)</span>
+<span class="font-time text-[12px] text-secondary">#F0F0ED</span>
+</div>
+</div>
+<!-- text token -->
+<div class="flex items-center gap-space-sm p-space-sm rounded-xl bg-surface-container-lowest shadow-sm">
+<div class="w-9 h-9 rounded-lg bg-[#1A1A1A] shrink-0"></div>
+<div class="flex flex-col min-w-0">
+<span class="font-body-emphasis text-[14px] text-on-surface leading-tight">Chữ chính (text)</span>
+<span class="font-time text-[12px] text-secondary">#1A1A1A</span>
+</div>
+</div>
+<!-- text-2 token -->
+<div class="flex items-center gap-space-sm p-space-sm rounded-xl bg-surface-container-lowest shadow-sm">
+<div class="w-9 h-9 rounded-lg bg-secondary shrink-0"></div>
+<div class="flex flex-col min-w-0">
+<span class="font-body-emphasis text-[14px] text-on-surface leading-tight">Chữ phụ (text-2)</span>
+<span class="font-time text-[12px] text-secondary">#6B6B6B</span>
+</div>
+</div>
+<!-- border token -->
+<div class="flex items-center gap-space-sm p-space-sm rounded-xl bg-surface-container-lowest shadow-sm">
+<div class="w-9 h-9 rounded-lg bg-[#E6E6E2] shrink-0"></div>
+<div class="flex flex-col min-w-0">
+<span class="font-body-emphasis text-[14px] text-on-surface leading-tight">Viền (border)</span>
+<span class="font-time text-[12px] text-secondary">#E6E6E2</span>
+</div>
+</div>
+<!-- accent token -->
+<div class="flex items-center gap-space-sm p-space-sm rounded-xl bg-surface-container-lowest shadow-sm">
+<div class="w-9 h-9 rounded-lg bg-primary-container shrink-0"></div>
+<div class="flex flex-col min-w-0">
+<span class="font-body-emphasis text-[14px] text-primary-container leading-tight">Điểm nhấn</span>
+<span class="font-time text-[12px] text-secondary">#2F6B4F</span>
+</div>
+</div>
+<!-- accent-bg token -->
+<div class="flex items-center gap-space-sm p-space-sm rounded-xl bg-surface-container-lowest shadow-sm">
+<div class="w-9 h-9 rounded-lg bg-on-primary-container shrink-0"></div>
+<div class="flex flex-col min-w-0">
+<span class="font-body-emphasis text-[14px] text-on-surface leading-tight">Nền nhấn</span>
+<span class="font-time text-[12px] text-secondary">#E7F0EA</span>
+</div>
+</div>
+</div>
+<!-- Semantic Feedback Colors -->
+<div class="grid grid-cols-3 gap-space-sm mt-1">
+<div class="flex flex-col p-2.5 rounded-xl bg-surface-container-lowest shadow-sm gap-1">
+<div class="h-6 w-full rounded bg-[#34A853]"></div>
+<span class="font-body-emphasis text-[13px] text-on-surface">Thành công</span>
+<span class="font-time text-[11px] text-secondary">#34A853</span>
+</div>
+<div class="flex flex-col p-2.5 rounded-xl bg-surface-container-lowest shadow-sm gap-1">
+<div class="h-6 w-full rounded bg-[#E8A33D]"></div>
+<span class="font-body-emphasis text-[13px] text-on-surface">Cảnh báo</span>
+<span class="font-time text-[11px] text-secondary">#E8A33D</span>
+</div>
+<div class="flex flex-col p-2.5 rounded-xl bg-surface-container-lowest shadow-sm gap-1">
+<div class="h-6 w-full rounded bg-[#D9534F]"></div>
+<span class="font-body-emphasis text-[13px] text-on-surface">Nguy hiểm</span>
+<span class="font-time text-[11px] text-secondary">#D9534F</span>
+</div>
+</div>
+<!-- Dark Mode Quick Preview Row -->
+<div class="flex flex-col p-space-md rounded-xl bg-inverse-surface text-inverse-on-surface gap-space-xs mt-1">
+<div class="flex items-center justify-between">
+<span class="font-meta text-meta text-outline-variant uppercase tracking-wider">Xem trước Bảng Màu Tối (Dark Palette)</span>
+<span class="material-symbols-outlined text-[18px] text-primary-fixed">dark_mode</span>
+</div>
+<div class="flex items-center gap-2 mt-1">
+<div class="flex-1 h-8 rounded-lg bg-[#181A18] flex items-center justify-center font-meta text-[10px] text-white/70">#181A18</div>
+<div class="flex-1 h-8 rounded-lg bg-[#242624] flex items-center justify-center font-meta text-[10px] text-white/70">#242624</div>
+<div class="flex-1 h-8 rounded-lg bg-[#2E322E] flex items-center justify-center font-meta text-[10px] text-white/70">#2E322E</div>
+<div class="flex-1 h-8 rounded-lg bg-[#529975] flex items-center justify-center font-meta text-[10px] text-on-primary-fixed">#529975</div>
+</div>
+</div>
+</section>
+<!-- Section 2: Type Scale Spec -->
+<section class="flex flex-col gap-space-md">
+<div class="flex items-center justify-between">
+<h3 class="font-section-header text-section-header uppercase tracking-wider text-on-surface-variant">02 • Hệ Thống Kiểu Chữ (Type Scale)</h3>
+<span class="font-meta text-meta text-secondary">SF Pro iOS</span>
+</div>
+<div class="flex flex-col rounded-xl bg-surface-container-lowest p-space-lg shadow-sm gap-space-md">
+<!-- Display -->
+<div class="flex flex-col pb-space-sm">
+<div class="flex justify-between items-baseline mb-0.5">
+<span class="font-meta text-meta text-secondary">Display • 28pt Bold / 34 leading</span>
+<span class="font-time text-meta text-primary-container">700</span>
+</div>
+<p class="font-large-title text-large-title text-on-surface">Tập trung hôm nay</p>
+</div>
+<!-- Title -->
+<div class="flex flex-col pb-space-sm">
+<div class="flex justify-between items-baseline mb-0.5">
+<span class="font-meta text-meta text-secondary">Title • 22pt Semibold / 28 leading</span>
+<span class="font-time text-meta text-primary-container">600</span>
+</div>
+<p class="font-title text-title text-on-surface">Phiên làm việc sâu</p>
+</div>
+<!-- Section Header -->
+<div class="flex flex-col pb-space-sm">
+<div class="flex justify-between items-baseline mb-0.5">
+<span class="font-meta text-meta text-secondary">Section Header • 13pt Semibold / 18 leading / Tracking 0.6</span>
+<span class="font-time text-meta text-primary-container">CAPS</span>
+</div>
+<p class="font-section-header text-section-header uppercase tracking-wider text-on-surface-variant">DANH SÁCH BUỔI CHIỀU</p>
+</div>
+<!-- Body Emphasis -->
+<div class="flex flex-col pb-space-sm">
+<div class="flex justify-between items-baseline mb-0.5">
+<span class="font-meta text-meta text-secondary">Body Emphasis • 17pt Semibold / 22 leading</span>
+<span class="font-time text-meta text-primary-container">600</span>
+</div>
+<p class="font-body-emphasis text-body-emphasis text-on-surface">Đánh giá tiến độ thiết kế sản phẩm</p>
+</div>
+<!-- Body Regular -->
+<div class="flex flex-col pb-space-sm">
+<div class="flex justify-between items-baseline mb-0.5">
+<span class="font-meta text-meta text-secondary">Body • 17pt Regular / 22 leading</span>
+<span class="font-time text-meta text-primary-container">400</span>
+</div>
+<p class="font-body text-body text-on-surface">Không gian làm việc tĩnh lặng giúp nâng cao hiệu suất xử lý công việc.</p>
+</div>
+<!-- Time -->
+<div class="flex flex-col pb-space-sm">
+<div class="flex justify-between items-baseline mb-0.5">
+<span class="font-meta text-meta text-secondary">Time • 15pt Semibold / Tabular Nums</span>
+<span class="font-time text-meta text-primary-container">Numeric</span>
+</div>
+<p class="font-time text-time text-secondary tracking-normal">09:30 SA — 11:45 TRƯA</p>
+</div>
+<!-- Meta -->
+<div class="flex flex-col">
+<div class="flex justify-between items-baseline mb-0.5">
+<span class="font-meta text-meta text-secondary">Meta • 13pt Regular / 18 leading</span>
+<span class="font-time text-meta text-primary-container">400</span>
+</div>
+<p class="font-meta text-meta text-on-surface-variant">Cập nhật lúc 14:02 • Đã đồng bộ qua iCloud</p>
+</div>
+</div>
+</section>
+<!-- Section 3: Interactive Components -->
+<section class="flex flex-col gap-space-md">
+<div class="flex items-center justify-between">
+<h3 class="font-section-header text-section-header uppercase tracking-wider text-on-surface-variant">03 • Thành Phần Tương Tác (Components)</h3>
+<span class="font-meta text-meta text-secondary">iOS Micro-spec</span>
+</div>
+<!-- Dayline Progress Ring Highlight Card -->
+<div class="flex items-center justify-between p-space-lg rounded-xl bg-surface-container-lowest shadow-sm">
+<div class="flex flex-col gap-1 pr-2">
+<span class="font-body-emphasis text-body-emphasis text-on-surface">Vòng Tiến Độ Ngày</span>
+<span class="font-meta text-meta text-secondary">Cập nhật trực quan theo tỷ lệ đầu việc đã xong</span>
+<span class="inline-flex items-center gap-1 font-time text-time text-primary-container mt-1">
+<span class="material-symbols-outlined text-[16px]">check_circle</span>
+          Hoàn thành 3/7 mục tiêu
+        </span>
+</div>
+<!-- Circular Progress Ring SVG 56x56 -->
+<div class="relative w-14 h-14 shrink-0 flex items-center justify-center">
+<svg class="w-14 h-14 -rotate-90 transform" viewbox="0 0 56 56">
+<defs>
+<lineargradient id="daylineProgressGrad" x1="0%" x2="100%" y1="0%" y2="100%">
+<stop offset="0%" stop-color="#2F6B4F"></stop>
+<stop offset="100%" stop-color="#529975"></stop>
+</lineargradient>
+</defs>
+<!-- Track -->
+<circle cx="28" cy="28" fill="none" r="23" stroke="#F0F0ED" stroke-width="4.5"></circle>
+<!-- Animated Progress (3/7 ≈ 42.8% -> stroke-dashoffset: 144.5 * (1 - 0.428) ≈ 82.6) -->
+<circle class="transition-all duration-700 ease-out" cx="28" cy="28" fill="none" r="23" stroke="url(#daylineProgressGrad)" stroke-dasharray="144.5" stroke-dashoffset="82.6" stroke-linecap="round" stroke-width="4.5"></circle>
+</svg>
+<span class="absolute font-time text-[13px] font-semibold text-primary-container">43%</span>
+</div>
+</div>
+<!-- Task Row States Showcase -->
+<div class="flex flex-col gap-space-xs">
+<span class="font-meta text-meta text-on-surface-variant font-medium">Trạng thái dòng công việc (Task Row States)</span>
+<!-- State: Đang làm (Active / In-progress) -->
+<div class="flex items-center h-14 px-space-lg rounded-xl bg-surface-container-lowest shadow-sm relative overflow-hidden transition-all duration-200">
+<!-- 3px Left Accent Bar -->
+<div class="absolute left-0 top-0 bottom-0 w-[3.5px] bg-primary-container"></div>
+<button aria-label="Đánh dấu hoàn tất" class="w-[22px] h-[22px] rounded-full bg-surface-container-high flex items-center justify-center mr-space-md shrink-0 active:scale-90 transition-transform duration-200" type="button">
+<span class="w-2 h-2 rounded-full bg-primary-container animate-ping"></span>
+</button>
+<div class="flex-1 min-w-0 pr-space-sm">
+<p class="font-body text-body text-on-surface truncate">Thiết kế hệ thống giao diện Dayline</p>
+</div>
+<div class="flex items-center gap-1.5 shrink-0">
+<span class="px-2 py-0.5 rounded-full bg-on-primary-container text-on-primary-fixed-variant font-meta text-[11px]">Đang làm</span>
+<span class="font-time text-time text-secondary">10:15</span>
+</div>
+</div>
+<!-- State: Sắp tới (Upcoming / Clean state) -->
+<div class="flex items-center h-14 px-space-lg rounded-xl bg-surface-container-lowest shadow-sm transition-all duration-200">
+<button aria-label="Đánh dấu hoàn tất" class="w-[22px] h-[22px] rounded-full bg-surface-container-high flex items-center justify-center mr-space-md shrink-0 active:scale-90 transition-transform duration-200" type="button">
+<span class="w-1.5 h-1.5 rounded-full bg-outline-variant"></span>
+</button>
+<div class="flex-1 min-w-0 pr-space-sm">
+<p class="font-body text-body text-on-surface truncate">Đồng bộ ghi chú cuộc họp khách hàng</p>
+</div>
+<div class="flex items-center gap-1.5 shrink-0">
+<span class="font-time text-time text-secondary">14:00</span>
+</div>
+</div>
+<!-- State: Đã xong (Completed / Strikethrough & 55% opacity) -->
+<div class="flex items-center h-14 px-space-lg rounded-xl bg-surface-container-lowest opacity-55 shadow-sm transition-all duration-200">
+<button aria-label="Hủy hoàn tất" class="w-[22px] h-[22px] rounded-full bg-primary-container flex items-center justify-center mr-space-md shrink-0 active:scale-90 transition-transform duration-200" type="button">
+<span class="material-symbols-outlined text-white text-[15px] leading-none">check</span>
+</button>
+<div class="flex-1 min-w-0 pr-space-sm">
+<p class="font-body text-body text-secondary line-through truncate">Uống 500ml nước ấm buổi sáng</p>
+</div>
+<div class="flex items-center gap-1.5 shrink-0">
+<span class="font-time text-time text-secondary line-through">07:30</span>
+</div>
+</div>
+</div>
+<!-- Buttons Collection -->
+<div class="flex flex-col gap-space-xs mt-1">
+<span class="font-meta text-meta text-on-surface-variant font-medium">Kiểu nút bấm (Button Hierarchy)</span>
+<!-- Primary Filled Button (Height 52px, Radius 999/14, Active Scale 0.98) -->
+<button class="w-full h-[52px] rounded-full bg-primary-container text-white font-body-emphasis text-body-emphasis flex items-center justify-center gap-2 active:scale-[0.98] active:opacity-90 transition-all duration-200 shadow-sm" type="button">
+<span class="material-symbols-outlined text-[20px]">add</span>
+        Tạo công việc mới (Primary)
+      </button>
+<!-- Secondary Tonal Button -->
+<button class="w-full h-[52px] rounded-full bg-secondary-container text-on-secondary-fixed font-body-emphasis text-body-emphasis flex items-center justify-center gap-2 active:scale-[0.98] transition-all duration-200" type="button">
+<span class="material-symbols-outlined text-[20px]">tune</span>
+        Tùy chỉnh chế độ lọc (Secondary)
+      </button>
+<!-- Ghost / Destructive Row -->
+<div class="grid grid-cols-2 gap-space-sm">
+<button class="h-11 rounded-xl bg-surface-container-high text-on-surface-variant font-body-emphasis text-[15px] flex items-center justify-center gap-1 active:scale-[0.98] transition-all duration-200" type="button">
+<span class="material-symbols-outlined text-[18px]">close</span>
+          Bỏ qua
+        </button>
+<button class="h-11 rounded-xl bg-[#D9534F] text-white font-body-emphasis text-[15px] flex items-center justify-center gap-1 active:scale-[0.98] transition-all duration-200 shadow-sm" type="button">
+<span class="material-symbols-outlined text-[18px]">delete</span>
+          Xóa tác vụ
+        </button>
+</div>
+</div>
+<!-- Input Field Spec -->
+<div class="flex flex-col gap-space-xs mt-1">
+<div class="flex items-center justify-between">
+<span class="font-meta text-meta text-on-surface-variant font-medium">Ô nhập liệu (Input Field)</span>
+<span class="font-meta text-meta text-secondary">R10 • H52</span>
+</div>
+<div class="relative flex items-center">
+<input class="w-full h-[52px] px-space-lg rounded-[10px] bg-surface-container-high text-on-surface font-body text-body outline-none focus:bg-surface-container-lowest focus:ring-2 focus:ring-primary-container transition-all duration-200 pr-12" placeholder="Nhập tên công việc mới..." type="text" value="Chuẩn bị tài liệu thuyết trình..."/>
+<button aria-label="Thêm nhanh" class="absolute right-3 w-8 h-8 rounded-full bg-primary-container text-white flex items-center justify-center active:scale-90 transition-transform duration-200" type="button">
+<span class="material-symbols-outlined text-[18px]">arrow_upward</span>
+</button>
+</div>
+</div>
+</section>
+<!-- Section 4: Spacing & Radius Tokens -->
+<section class="flex flex-col gap-space-md">
+<div class="flex items-center justify-between">
+<h3 class="font-section-header text-section-header uppercase tracking-wider text-on-surface-variant">04 • Thước Đo Khoảng Cách & Bo Góc</h3>
+<span class="font-meta text-meta text-secondary">Layout Rules</span>
+</div>
+<!-- Spacing Steps Visualizer -->
+<div class="flex flex-col p-space-lg rounded-xl bg-surface-container-lowest shadow-sm gap-space-md">
+<span class="font-meta text-meta text-secondary">Hệ thang đo khoảng cách (Spacing Scales: 4px — 48px)</span>
+<div class="flex flex-col gap-2.5">
+<div class="flex items-center gap-3">
+<span class="font-time text-[13px] text-secondary w-14 shrink-0">4px (xs)</span>
+<div class="h-3 w-1 rounded bg-primary-container"></div>
+<span class="font-meta text-[11px] text-on-surface-variant">Khoảng cách icon và chữ inline</span>
+</div>
+<div class="flex items-center gap-3">
+<span class="font-time text-[13px] text-secondary w-14 shrink-0">8px (sm)</span>
+<div class="h-3 w-2 rounded bg-primary-container"></div>
+<span class="font-meta text-[11px] text-on-surface-variant">Khoảng cách chip danh mục</span>
+</div>
+<div class="flex items-center gap-3">
+<span class="font-time text-[13px] text-secondary w-14 shrink-0">12px (md)</span>
+<div class="h-3 w-3 rounded bg-primary-container"></div>
+<span class="font-meta text-[11px] text-on-surface-variant">Khoảng cách dọc giữa các task</span>
+</div>
+<div class="flex items-center gap-3">
+<span class="font-time text-[13px] text-secondary w-14 shrink-0">16px (lg)</span>
+<div class="h-3 w-4 rounded bg-primary-container"></div>
+<span class="font-meta text-[11px] text-on-surface-variant">Đệm trong chuẩn của thẻ Card</span>
+</div>
+<div class="flex items-center gap-3">
+<span class="font-time text-[13px] text-secondary w-14 shrink-0">24px (xl)</span>
+<div class="h-3 w-6 rounded bg-primary-container"></div>
+<span class="font-meta text-[11px] text-on-surface-variant">Khoảng cách tiêu đề đến khối nội dung</span>
+</div>
+<div class="flex items-center gap-3">
+<span class="font-time text-[13px] text-secondary w-14 shrink-0">32px (2xl)</span>
+<div class="h-3 w-8 rounded bg-primary-container"></div>
+<span class="font-meta text-[11px] text-on-surface-variant">Phân tách nhóm lớn (Sáng / Chiều / Tối)</span>
+</div>
+<div class="flex items-center gap-3">
+<span class="font-time text-[13px] text-secondary w-14 shrink-0">48px (3xl)</span>
+<div class="h-3 w-12 rounded bg-primary-container"></div>
+<span class="font-meta text-[11px] text-on-surface-variant">Khoảng trống chân trang kết thúc màn hình</span>
+</div>
+</div>
+</div>
+<!-- Radius Tokens Showcase -->
+<div class="grid grid-cols-4 gap-space-sm">
+<div class="flex flex-col items-center justify-center p-3 rounded-[10px] bg-surface-container-high aspect-square text-center">
+<span class="font-time text-[15px] font-semibold text-on-surface">10px</span>
+<span class="font-meta text-[11px] text-secondary">Input field</span>
+</div>
+<div class="flex flex-col items-center justify-center p-3 rounded-[14px] bg-surface-container-high aspect-square text-center">
+<span class="font-time text-[15px] font-semibold text-on-surface">14px</span>
+<span class="font-meta text-[11px] text-secondary">Card view</span>
+</div>
+<div class="flex flex-col items-center justify-center p-3 rounded-[18px] bg-surface-container-high aspect-square text-center">
+<span class="font-time text-[15px] font-semibold text-on-surface">18px</span>
+<span class="font-meta text-[11px] text-secondary">Modal sheet</span>
+</div>
+<div class="flex flex-col items-center justify-center p-3 rounded-full bg-primary-fixed text-on-primary-fixed aspect-square text-center">
+<span class="font-time text-[15px] font-semibold">999px</span>
+<span class="font-meta text-[11px] text-on-primary-fixed-variant">Capsule</span>
+</div>
+</div>
+</section>
+<!-- Interactive Sandbox Playground Card -->
+<section class="flex flex-col p-space-lg rounded-xl bg-surface-container-lowest shadow-sm gap-space-sm mb-space-lg">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary-container text-[20px]">touch_app</span>
+<h4 class="font-body-emphasis text-body-emphasis text-on-surface">Thử nghiệm phản hồi (Micro-Sandbox)</h4>
+</div>
+<span class="font-meta text-meta text-primary-container">200ms ease-out</span>
+</div>
+<p class="font-meta text-meta text-secondary">Nhấp thử đầu việc dưới đây để trải nghiệm phản hồi xúc giác giả lập và chuyển động đánh dấu mượt mà.</p>
+<div class="flex items-center h-14 px-space-lg rounded-xl bg-surface-container-low transition-all duration-200 cursor-pointer select-none mt-1" id="interactiveSandboxRow">
+<div class="w-[22px] h-[22px] rounded-full bg-surface-container-high flex items-center justify-center mr-space-md shrink-0 transition-all duration-200" id="sandboxCheckbox">
+<span class="material-symbols-outlined text-white text-[15px] opacity-0 scale-50 transition-all duration-200" id="sandboxCheckIcon">check</span>
+</div>
+<div class="flex-1 min-w-0 pr-space-sm">
+<span class="font-body text-body text-on-surface transition-colors duration-200" id="sandboxText">Hoàn thành bài tập thở buổi sáng</span>
+</div>
+<span class="font-time text-time text-secondary transition-colors duration-200" id="sandboxBadge">08:00</span>
+</div>
+</section>
+</div>
+<script>
+  (function initDaylinePlayground() {
+    const sandboxRow = document.getElementById('interactiveSandboxRow');
+    const sandboxCheckbox = document.getElementById('sandboxCheckbox');
+    const sandboxCheckIcon = document.getElementById('sandboxCheckIcon');
+    const sandboxText = document.getElementById('sandboxText');
+    const sandboxBadge = document.getElementById('sandboxBadge');
+
+    if (!sandboxRow || !sandboxCheckbox || !sandboxCheckIcon || !sandboxText || !sandboxBadge) return;
+
+    let isDone = false;
+
+    sandboxRow.addEventListener('click', () => {
+      isDone = !isDone;
+      if (isDone) {
+        sandboxRow.classList.add('opacity-55');
+        sandboxCheckbox.classList.remove('bg-surface-container-high');
+        sandboxCheckbox.classList.add('bg-primary-container', 'scale-110');
+        setTimeout(() => sandboxCheckbox.classList.remove('scale-110'), 150);
+
+        sandboxCheckIcon.classList.remove('opacity-0', 'scale-50');
+        sandboxCheckIcon.classList.add('opacity-100', 'scale-100');
+
+        sandboxText.classList.add('line-through', 'text-secondary');
+        sandboxBadge.classList.add('line-through');
+      } else {
+        sandboxRow.classList.remove('opacity-55');
+        sandboxCheckbox.classList.remove('bg-primary-container');
+        sandboxCheckbox.classList.add('bg-surface-container-high');
+
+        sandboxCheckIcon.classList.remove('opacity-100', 'scale-100');
+        sandboxCheckIcon.classList.add('opacity-0', 'scale-50');
+
+        sandboxText.classList.remove('line-through', 'text-secondary');
+        sandboxBadge.classList.remove('line-through');
+      }
+    });
+  })();
+</script></main><nav class="fixed bottom-0 inset-x-0 z-50 pb-safe bg-background/90 backdrop-blur-xl shadow-[0_-1px_12px_rgba(0,0,0,0.03)]" data-active-classes="text-primary-container font-semibold"><div class="h-[49px] flex items-center justify-around px-gutter"><a class="flex flex-col items-center justify-center min-w-[56px] min-h-[44px] gap-[2px] text-secondary hover:text-on-surface transition-colors duration-200" data-path="hom-nay" href="#"><span class="material-symbols-outlined text-[22px]">wb_sunny</span><span class="font-meta text-[11px] leading-tight">Hôm nay</span></a><a class="flex flex-col items-center justify-center min-w-[56px] min-h-[44px] gap-[2px] text-secondary hover:text-on-surface transition-colors duration-200" data-path="ghi-chu" href="#"><span class="material-symbols-outlined text-[22px]">edit_note</span><span class="font-meta text-[11px] leading-tight">Ghi chú</span></a><a class="flex flex-col items-center justify-center min-w-[56px] min-h-[44px] gap-[2px] text-secondary hover:text-on-surface transition-colors duration-200" data-path="thong-ke" href="#"><span class="material-symbols-outlined text-[22px]">pie_chart</span><span class="font-meta text-[11px] leading-tight">Thống kê</span></a><a class="flex flex-col items-center justify-center min-w-[56px] min-h-[44px] gap-[2px] text-secondary hover:text-on-surface transition-colors duration-200" data-path="cai-dat" href="#"><span class="material-symbols-outlined text-[22px]">settings</span><span class="font-meta text-[11px] leading-tight">Cài đặt</span></a></div></nav></body></html>

@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+
+<html lang="vi"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" name="viewport"/><meta content="mobile_stack" name="shell-type"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=SF+Pro+Display:wght@100..900&amp;family=SF+Pro+Text:wght@100..900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><style>@layer base{html,body{width:100%;margin:0;padding:0;}body{overscroll-behavior-y:none;-webkit-tap-highlight-color:transparent;}.pb-safe{padding-bottom:max(env(safe-area-inset-bottom,34px),34px);}.pt-safe{padding-top:max(env(safe-area-inset-top,59px),59px);}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config = { darkMode: "class", theme: { extend: { "colors": { "error": "#ba1a1a", "on-primary-container": "#aae9c6", "secondary-fixed": "#dce5df", "on-tertiary-container": "#ffd1d1", "on-primary-fixed": "#002113", "on-error": "#ffffff", "tertiary-fixed": "#ffdad9", "on-surface": "#1c1b1b", "surface-container-high": "#eae7e7", "secondary-container": "#dce5df", "on-secondary-container": "#5e6662", "surface-container-highest": "#e5e2e1", "primary": "#125238", "inverse-primary": "#96d4b2", "inverse-on-surface": "#f3f0ef", "on-tertiary": "#ffffff", "surface": "#fcf9f8", "outline-variant": "#c0c9c1", "primary-fixed": "#b1f0cd", "tertiary-container": "#8e4e50", "outline": "#707972", "on-surface-variant": "#404943", "primary-container": "#2f6b4f", "surface-variant": "#e5e2e1", "tertiary-fixed-dim": "#ffb3b4", "secondary": "#58605c", "background": "#fcf9f8", "error-container": "#ffdad6", "surface-container-low": "#f6f3f2", "primary-fixed-dim": "#96d4b2", "on-tertiary-fixed-variant": "#6f3538", "surface-container-lowest": "#ffffff", "on-secondary": "#ffffff", "secondary-fixed-dim": "#c0c9c3", "tertiary": "#723739", "inverse-surface": "#313030", "on-error-container": "#93000a", "on-tertiary-fixed": "#390b0f", "on-background": "#1c1b1b", "on-primary": "#ffffff", "surface-container": "#f0eded", "surface-tint": "#2d694d", "surface-bright": "#fcf9f8", "on-secondary-fixed-variant": "#404945", "surface-dim": "#dcd9d9", "on-secondary-fixed": "#151d1a", "on-primary-fixed-variant": "#105137" }, "borderRadius": { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px" }, "spacing": { "margin": "20px", "space-xl": "24px", "space-lg": "16px", "space-3xl": "48px", "space-2xl": "32px", "gutter": "12px", "space-sm": "8px", "space-xs": "4px", "space-md": "12px" }, "fontFamily": { "large-title": ["SF Pro Display"], "title": ["SF Pro Display"], "body-emphasis": ["SF Pro Text"], "section-header": ["SF Pro Text"], "body": ["SF Pro Text"], "time": ["SF Pro Text"], "meta": ["SF Pro Text"] }, "fontSize": { "large-title": ["28px", { "lineHeight": "34px", "fontWeight": "700" }], "title": ["22px", { "lineHeight": "28px", "fontWeight": "600" }], "body-emphasis": ["17px", { "lineHeight": "22px", "fontWeight": "600" }], "section-header": ["13px", { "lineHeight": "18px", "letterSpacing": "0.6px", "fontWeight": "600" }], "body": ["17px", { "lineHeight": "22px", "fontWeight": "400" }], "time": ["15px", { "lineHeight": "20px", "fontWeight": "600" }], "meta": ["13px", { "lineHeight": "18px", "fontWeight": "400" }] } } } };</script><style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head><body class="bg-background font-body text-body text-on-surface flex flex-col min-h-screen selection:bg-primary-fixed"><header class="fixed top-0 inset-x-0 z-50 bg-background/85 backdrop-blur-xl pt-safe shadow-[0_1px_8px_rgba(0,0,0,0.02)]"><div class="h-14 px-margin flex items-center justify-between"><a aria-label="Quay lại" class="inline-flex items-center gap-1 text-primary-container -ml-2 p-2 hover:opacity-80 active:opacity-60 transition-opacity min-w-[44px] min-h-[44px]" href="#"><span class="material-symbols-outlined text-[24px]">arrow_back_ios_new</span><span class="font-body-emphasis text-body-emphasis">Ghi chú</span></a><h1 class="font-body-emphasis text-body-emphasis text-on-surface truncate max-w-[150px] text-center">06 — Note Editor</h1><div class="flex items-center gap-1 -mr-2"><button aria-label="Chia sẻ" class="flex items-center justify-center w-11 h-11 text-primary-container hover:opacity-80 active:opacity-60 transition-opacity"><span class="material-symbols-outlined text-[22px]">ios_share</span></button><button aria-label="Xong" class="px-2 py-1 font-body-emphasis text-body-emphasis text-primary-container hover:opacity-80 active:opacity-60 transition-opacity">Xong</button></div></div></header><main class="flex flex-col relative w-full px-margin pt-14 pb-20 bg-background"><div class="flex flex-col w-full pb-10 space-y-space-xl">
+<!-- Top Visual Status Banner -->
+<section class="w-full">
+<div class="bg-primary-fixed/30 rounded-xl p-space-lg flex items-start gap-space-md shadow-sm">
+<div class="w-10 h-10 rounded-full bg-primary-container text-on-primary flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-[24px]" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+</div>
+<div class="flex-1 min-w-0">
+<div class="flex items-center justify-between">
+<h2 class="font-body-emphasis text-body-emphasis text-on-surface">Tất cả dịch vụ sẵn sàng</h2>
+<span class="px-2 py-0.5 rounded-full bg-primary-container/10 text-primary font-meta text-meta font-medium">v1.2.0</span>
+</div>
+<p class="font-body text-body text-on-surface-variant text-[15px] mt-1 leading-snug">
+          Môi trường App Group và WidgetKit đã đồng bộ hoàn hảo. Sẵn sàng cho build IPA trực tiếp.
+        </p>
+</div>
+</div>
+</section>
+<!-- Technical Check / System Status Inset Group -->
+<section class="space-y-space-sm">
+<div class="px-1 flex items-center justify-between">
+<span class="font-section-header text-section-header text-on-surface-variant uppercase tracking-wider">Thông số App Group &amp; Cấu hình</span>
+<span class="font-meta text-meta text-secondary">Thời gian thực</span>
+</div>
+<div class="bg-surface-container-lowest rounded-xl p-space-lg space-y-space-md shadow-sm">
+<!-- Item 1: App Group Identifier -->
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-space-md min-w-0">
+<div class="w-8 h-8 rounded-lg bg-surface-container flex items-center justify-center text-primary shrink-0">
+<span class="material-symbols-outlined text-[18px]">hub</span>
+</div>
+<div class="min-w-0">
+<div class="font-body-emphasis text-body text-on-surface truncate">App Group ID</div>
+<div class="font-meta text-meta text-secondary truncate font-mono text-[12px]">group.com.ngia.dayline</div>
+</div>
+</div>
+<div class="flex items-center gap-1.5 shrink-0 bg-primary-fixed/40 px-2.5 py-1 rounded-full">
+<span class="w-2 h-2 rounded-full bg-primary animate-pulse"></span>
+<span class="font-meta text-meta text-primary font-medium">Đã kết nối</span>
+</div>
+</div>
+<div class="h-[1px] w-full bg-surface-container"></div>
+<!-- Item 2: Widget Extension -->
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-space-md min-w-0">
+<div class="w-8 h-8 rounded-lg bg-surface-container flex items-center justify-center text-primary shrink-0">
+<span class="material-symbols-outlined text-[18px]">widgets</span>
+</div>
+<div class="min-w-0">
+<div class="font-body-emphasis text-body text-on-surface truncate">Widget Extension</div>
+<div class="font-meta text-meta text-secondary truncate font-mono text-[12px]">com.ngia.dayline.widgets</div>
+</div>
+</div>
+<div class="flex items-center gap-1.5 shrink-0 bg-primary-fixed/40 px-2.5 py-1 rounded-full">
+<span class="w-2 h-2 rounded-full bg-primary"></span>
+<span class="font-meta text-meta text-primary font-medium">Sẵn sàng</span>
+</div>
+</div>
+<div class="h-[1px] w-full bg-surface-container"></div>
+<!-- Item 3: Shared UserDefaults -->
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-space-md min-w-0">
+<div class="w-8 h-8 rounded-lg bg-surface-container flex items-center justify-center text-secondary shrink-0">
+<span class="material-symbols-outlined text-[18px]">folder_shared</span>
+</div>
+<div class="min-w-0">
+<div class="font-body-emphasis text-body text-on-surface truncate">Shared UserDefaults</div>
+<div class="font-meta text-meta text-secondary truncate">7 khóa lưu trữ dùng chung</div>
+</div>
+</div>
+<div class="font-time text-time text-on-surface shrink-0 font-mono">14.2 KB</div>
+</div>
+<div class="h-[1px] w-full bg-surface-container"></div>
+<!-- Item 4: Database SQLite / SwiftData -->
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-space-md min-w-0">
+<div class="w-8 h-8 rounded-lg bg-surface-container flex items-center justify-center text-secondary shrink-0">
+<span class="material-symbols-outlined text-[18px]">dataset</span>
+</div>
+<div class="min-w-0">
+<div class="font-body-emphasis text-body text-on-surface truncate">Cơ sở dữ liệu SwiftData</div>
+<div class="font-meta text-meta text-secondary truncate">6 tasks • 2 notes</div>
+</div>
+</div>
+<div class="font-time text-time text-on-surface shrink-0 font-mono">128 KB</div>
+</div>
+<div class="h-[1px] w-full bg-surface-container"></div>
+<!-- Item 5: Notification Authorization -->
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-space-md min-w-0">
+<div class="w-8 h-8 rounded-lg bg-surface-container flex items-center justify-center text-primary shrink-0">
+<span class="material-symbols-outlined text-[18px]">notifications_active</span>
+</div>
+<div class="min-w-0">
+<div class="font-body-emphasis text-body text-on-surface truncate">Cấp quyền thông báo</div>
+<div class="font-meta text-meta text-secondary truncate">Badge, Sound, Alert</div>
+</div>
+</div>
+<span class="font-body-emphasis text-meta text-primary shrink-0 bg-primary-fixed/40 px-2.5 py-1 rounded-full">Authorized</span>
+</div>
+<div class="h-[1px] w-full bg-surface-container"></div>
+<!-- Item 6: Keychain & iCloud Sync -->
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-space-md min-w-0">
+<div class="w-8 h-8 rounded-lg bg-surface-container flex items-center justify-center text-secondary shrink-0">
+<span class="material-symbols-outlined text-[18px]">vpn_key</span>
+</div>
+<div class="min-w-0">
+<div class="font-body-emphasis text-body text-on-surface truncate">Bảo mật Keychain</div>
+<div class="font-meta text-meta text-secondary truncate">Chế độ đồng bộ</div>
+</div>
+</div>
+<span class="font-meta text-meta text-on-surface-variant shrink-0">Nội bộ thiết bị</span>
+</div>
+</div>
+</section>
+<!-- Diagnostic Actions -->
+<section class="space-y-space-sm">
+<div class="px-1">
+<span class="font-section-header text-section-header text-on-surface-variant uppercase tracking-wider">Thao tác can thiệp gỡ lỗi</span>
+</div>
+<div class="grid grid-cols-1 gap-space-sm">
+<!-- Action 1: Sync App Group Trigger -->
+<button class="w-full bg-surface-container-lowest active:bg-surface-container rounded-xl p-space-md flex items-center justify-between text-left transition duration-200 shadow-sm min-h-[52px]" id="btn-sync-group">
+<div class="flex items-center gap-space-md">
+<div class="w-8 h-8 rounded-full bg-primary-fixed flex items-center justify-center text-on-primary-fixed shrink-0">
+<span class="material-symbols-outlined text-[20px]" id="sync-icon">sync</span>
+</div>
+<div>
+<div class="font-body-emphasis text-body text-on-surface">Kiểm tra đồng bộ App Group ngay</div>
+<div class="font-meta text-meta text-secondary">Kích hoạt reload timeline Widgets</div>
+</div>
+</div>
+<span class="material-symbols-outlined text-secondary text-[20px]">arrow_forward_ios</span>
+</button>
+<!-- Action 2: Trigger Log Test Widget -->
+<button class="w-full bg-surface-container-lowest active:bg-surface-container rounded-xl p-space-md flex items-center justify-between text-left transition duration-200 shadow-sm min-h-[52px]" id="btn-test-widget">
+<div class="flex items-center gap-space-md">
+<div class="w-8 h-8 rounded-full bg-secondary-fixed flex items-center justify-center text-on-secondary-fixed shrink-0">
+<span class="material-symbols-outlined text-[20px]">bug_report</span>
+</div>
+<div>
+<div class="font-body-emphasis text-body text-on-surface">Ghi log test widget</div>
+<div class="font-meta text-meta text-secondary">Phát sinh sự kiện telemetry giả lập</div>
+</div>
+</div>
+<span class="material-symbols-outlined text-secondary text-[20px]">arrow_forward_ios</span>
+</button>
+<!-- Action 3: Purge Cache Shared Data -->
+<button class="w-full bg-surface-container-lowest active:bg-surface-container rounded-xl p-space-md flex items-center justify-between text-left transition duration-200 shadow-sm min-h-[52px]" id="btn-clear-cache">
+<div class="flex items-center gap-space-md">
+<div class="w-8 h-8 rounded-full bg-tertiary-fixed flex items-center justify-center text-tertiary shrink-0">
+<span class="material-symbols-outlined text-[20px]">cleaning_services</span>
+</div>
+<div>
+<div class="font-body-emphasis text-body text-on-surface">Khôi phục cache dữ liệu dùng chung</div>
+<div class="font-meta text-meta text-secondary">Làm mới bộ nhớ đệm widget UserDefaults</div>
+</div>
+</div>
+<span class="material-symbols-outlined text-secondary text-[20px]">restart_alt</span>
+</button>
+</div>
+</section>
+<!-- Console Log Terminal Box -->
+<section class="space-y-space-sm">
+<div class="flex items-center justify-between px-1">
+<div class="flex items-center gap-2">
+<span class="font-section-header text-section-header text-on-surface-variant uppercase tracking-wider">Nhật ký hệ thống (Console)</span>
+<span class="inline-flex items-center px-1.5 py-0.5 rounded text-[11px] font-mono bg-surface-container-high text-secondary">Live Stream</span>
+</div>
+<button class="font-meta text-meta text-primary-container active:opacity-70 flex items-center gap-0.5" id="btn-clear-log">
+<span class="material-symbols-outlined text-[15px]">delete_sweep</span> Xóa màn hình
+      </button>
+</div>
+<div class="w-full bg-inverse-surface rounded-xl p-space-md text-inverse-on-surface font-mono text-[12px] leading-relaxed shadow-sm overflow-hidden">
+<div class="flex items-center justify-between pb-2 mb-2 border-b border-surface-container-highest/20 text-surface-container-high">
+<div class="flex items-center gap-1.5">
+<div class="w-2.5 h-2.5 rounded-full bg-error"></div>
+<div class="w-2.5 h-2.5 rounded-full bg-primary-fixed"></div>
+<div class="w-2.5 h-2.5 rounded-full bg-secondary-fixed"></div>
+<span class="ml-2 text-[10px] text-surface-dim font-sans">stdout • arm64 • iOS 17.5</span>
+</div>
+<span class="text-[10px] text-surface-dim font-mono" id="log-timestamp">14:02:11</span>
+</div>
+<div class="space-y-1.5 max-h-[160px] overflow-y-auto pr-1 select-text" id="terminal-body">
+<div class="text-primary-fixed-dim">[INFO] AppGroup initialized: group.com.ngia.dayline</div>
+<div class="text-inverse-on-surface">[SYNC] WidgetCenter.shared.reloadAllTimelines() dispatched (0.04s)</div>
+<div class="text-inverse-on-surface">[AUTH] UNUserNotificationCenter status: authorized</div>
+<div class="text-secondary-fixed-dim">[STORAGE] SwiftData schema v2: 8 records cached successfully</div>
+<div class="text-inverse-on-surface">[SHARED] UserDefaults(suiteName:) synchronized 14.2 KB</div>
+<div class="text-primary-fixed-dim">[READY] Standalone widget host connection established</div>
+</div>
+</div>
+</section>
+<!-- Export Log Action Button -->
+<section class="pt-space-xs">
+<button class="w-full h-[52px] rounded-[14px] bg-secondary-container text-on-secondary-container font-body-emphasis text-body-emphasis flex items-center justify-center gap-space-sm active:opacity-80 transition duration-150 shadow-sm" id="btn-export-log">
+<span class="material-symbols-outlined text-[20px]">ios_share</span>
+<span>Xuất file chẩn đoán (.log / .json)</span>
+</button>
+</section>
+<!-- Interactive notification toast -->
+<div class="fixed bottom-16 left-margin right-margin mx-auto max-w-sm bg-inverse-surface text-inverse-on-surface px-space-md py- space-sm rounded-full text-center font-meta text-meta shadow-xl opacity-0 pointer-events-none transition-all duration-300 transform translate-y-4 flex items-center justify-center gap-2" id="toast">
+<span class="material-symbols-outlined text-[18px] text-primary-fixed">check_circle</span>
+<span id="toast-message">Đã kích hoạt hành động</span>
+</div>
+</div>
+<script>
+  (function() {
+    const toast = document.getElementById('toast');
+    const toastMsg = document.getElementById('toast-message');
+    const terminal = document.getElementById('terminal-body');
+    const syncIcon = document.getElementById('sync-icon');
+
+    function showToast(message) {
+      if (!toast) return;
+      toastMsg.textContent = message;
+      toast.classList.remove('opacity-0', 'translate-y-4', 'pointer-events-none');
+      toast.classList.add('opacity-100', 'translate-y-0');
+      setTimeout(() => {
+        toast.classList.add('opacity-0', 'translate-y-4', 'pointer-events-none');
+        toast.classList.remove('opacity-100', 'translate-y-0');
+      }, 2000);
+    }
+
+    function appendLog(tag, message, colorClass = 'text-inverse-on-surface') {
+      if (!terminal) return;
+      const row = document.createElement('div');
+      row.className = colorClass;
+      row.textContent = `[${tag}] ${message}`;
+      terminal.appendChild(row);
+      terminal.scrollTop = terminal.scrollHeight;
+    }
+
+    const btnSync = document.getElementById('btn-sync-group');
+    if (btnSync) {
+      btnSync.addEventListener('click', () => {
+        syncIcon.classList.add('animate-spin');
+        appendLog('SYNCING', 'Dispatching reloadTimelines(ofKind: "DaylineWidget")...', 'text-primary-fixed-dim');
+        setTimeout(() => {
+          syncIcon.classList.remove('animate-spin');
+          appendLog('SUCCESS', 'WidgetCenter: Timeline updated in 0.028s', 'text-primary-fixed');
+          showToast('Đã đồng bộ App Group thành công!');
+        }, 650);
+      });
+    }
+
+    const btnTestWidget = document.getElementById('btn-test-widget');
+    if (btnTestWidget) {
+      btnTestWidget.addEventListener('click', () => {
+        const timestamp = new Date().toLocaleTimeString('vi-VN', { hour12: false });
+        appendLog('TEST', `Widget telemetry ping @ ${timestamp}: 200 OK`, 'text-secondary-fixed-dim');
+        showToast('Đã ghi bản ghi log test widget');
+      });
+    }
+
+    const btnClearCache = document.getElementById('btn-clear-cache');
+    if (btnClearCache) {
+      btnClearCache.addEventListener('click', () => {
+        appendLog('RESET', 'UserDefaults suite memory flush completed.', 'text-tertiary-fixed-dim');
+        showToast('Đã khôi phục cache dữ liệu dùng chung');
+      });
+    }
+
+    const btnClearLog = document.getElementById('btn-clear-log');
+    if (btnClearLog && terminal) {
+      btnClearLog.addEventListener('click', () => {
+        terminal.innerHTML = '';
+        appendLog('SYS', 'Bản ghi console đã xóa. Đang chờ luồng mới...', 'text-secondary-fixed-dim');
+      });
+    }
+
+    const btnExport = document.getElementById('btn-export-log');
+    if (btnExport) {
+      btnExport.addEventListener('click', () => {
+        showToast('Đã chuẩn bị tệp log: dayline_diagnostics.json');
+        appendLog('EXPORT', 'Archive exported: dayline-debug-pack-2025.json (62 KB)', 'text-primary-fixed-dim');
+      });
+    }
+  })();
+</script></main><footer class="fixed bottom-0 inset-x-0 z-50 pb-safe bg-background/90 backdrop-blur-xl shadow-[0_-1px_12px_rgba(0,0,0,0.03)]"><div class="h-[44px] flex items-center justify-between px-margin text-secondary"><div class="flex items-center gap-space-sm"><button aria-label="In đậm" class="w-9 h-9 flex items-center justify-center rounded-lg hover:bg-surface-container active:scale-95 transition"><span class="material-symbols-outlined text-[20px]">format_bold</span></button><button aria-label="In nghiêng" class="w-9 h-9 flex items-center justify-center rounded-lg hover:bg-surface-container active:scale-95 transition"><span class="material-symbols-outlined text-[20px]">format_italic</span></button><button aria-label="Tiêu đề" class="w-9 h-9 flex items-center justify-center rounded-lg hover:bg-surface-container active:scale-95 transition"><span class="material-symbols-outlined text-[20px]">title</span></button><button aria-label="Danh sách việc" class="w-9 h-9 flex items-center justify-center rounded-lg hover:bg-surface-container active:scale-95 transition"><span class="material-symbols-outlined text-[20px]">check_box</span></button></div><div class="flex items-center gap-space-xs"><button aria-label="Chèn ảnh" class="w-9 h-9 flex items-center justify-center rounded-lg hover:bg-surface-container active:scale-95 transition"><span class="material-symbols-outlined text-[20px]">image</span></button><button aria-label="Bàn phím ẩn" class="w-9 h-9 flex items-center justify-center rounded-lg hover:bg-surface-container active:scale-95 transition"><span class="material-symbols-outlined text-[20px]">keyboard_hide</span></button></div></div></footer></body></html>

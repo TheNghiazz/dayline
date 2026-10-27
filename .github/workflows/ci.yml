@@ -1,0 +1,110 @@
+name: ci
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  test:
+    name: Unit tests
+    runs-on: macos-15
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install XcodeGen
+        run: brew install xcodegen
+
+      - name: Generate Xcode project
+        run: xcodegen generate
+
+      - name: Pick a simulator
+        id: sim
+        run: |
+          UDID=$(xcrun simctl list devices available -j \
+            | python3 -c "import json,sys; d=json.load(sys.stdin)['devices']; c=[x['udid'] for v in d.values() for x in v if x['name'].startswith('iPhone')]; print(c[0])")
+          echo "Picked $UDID"
+          echo "udid=$UDID" >> "$GITHUB_OUTPUT"
+
+      - name: Run tests
+        run: |
+          set -o pipefail
+          mkdir -p build
+          xcodebuild test \
+            -project Dayline.xcodeproj \
+            -scheme Dayline \
+            -configuration Debug \
+            -destination "platform=iOS Simulator,id=${{ steps.sim.outputs.udid }}" \
+            -resultBundlePath build/test.xcresult
+
+      - name: Upload test results
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: test-results
+          path: build/test.xcresult
+          retention-days: 7
+
+  screenshots:
+    name: Screenshots
+    runs-on: macos-15
+    needs: test
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install XcodeGen
+        run: brew install xcodegen
+
+      - name: Generate Xcode project
+        run: xcodegen generate
+
+      - name: Pick a simulator
+        id: sim
+        run: |
+          UDID=$(xcrun simctl list devices available -j \
+            | python3 -c "import json,sys; d=json.load(sys.stdin)['devices']; c=[x['udid'] for v in d.values() for x in v if x['name'].startswith('iPhone')]; print(c[0])")
+          echo "Picked $UDID"
+          echo "udid=$UDID" >> "$GITHUB_OUTPUT"
+
+      - name: Build for simulator
+        run: |
+          xcodebuild build \
+            -project Dayline.xcodeproj \
+            -scheme Dayline \
+            -configuration Debug \
+            -sdk iphonesimulator \
+            -destination "platform=iOS Simulator,id=${{ steps.sim.outputs.udid }}" \
+            -derivedDataPath build
+
+      - name: Boot and install
+        run: |
+          DEV="${{ steps.sim.outputs.udid }}"
+          xcrun simctl boot "$DEV" || true
+          xcrun simctl bootstatus "$DEV" -b
+          xcrun simctl install "$DEV" build/Build/Products/Debug-iphonesimulator/Dayline.app
+          xcrun simctl status_bar "$DEV" override --time "9:41" --batteryState charged --batteryLevel 100
+
+      - name: Shoot screenshots
+        run: |
+          DEV="${{ steps.sim.outputs.udid }}"
+          BUNDLE=com.ngia.dayline
+          for appearance in light dark; do
+            xcrun simctl ui "$DEV" appearance "$appearance"
+            xcrun simctl terminate "$DEV" "$BUNDLE" || true
+            xcrun simctl launch "$DEV" "$BUNDLE" -AppleLanguages "(vi)" -AppleLocale "vi_VN"
+            sleep 4
+            xcrun simctl io "$DEV" screenshot "shot-today-$appearance.png"
+          done
+
+      - name: Upload screenshots
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: ui-screenshots
+          path: shot-*.png
+          retention-days: 14
