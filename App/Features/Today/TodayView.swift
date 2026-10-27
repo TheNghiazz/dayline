@@ -1,52 +1,55 @@
+import Combine
 import SwiftUI
 import UIKit
 
 struct TodayView: View {
-    @State private var tasks: [TodayTask]
+    @State private var store: TodayStore
     @State private var completedExpanded = true
+    @State private var pendingDelete: TaskItem?
+    @State private var editorTarget: EditorTarget?
 
-    init(tasks: [TodayTask] = TodayTask.sample()) {
-        _tasks = State(initialValue: tasks)
+    init(store: TodayStore? = nil) {
+        _store = State(initialValue: store ?? TodayStore(repository: AppRepositories.tasks))
     }
 
     var body: some View {
-        let now = Date.now
-        let completed = tasks.filter(\.isDone)
-        let current = tasks.first { !$0.isDone && $0.state(at: now) == .current }
-        let upcoming = tasks
-            .filter { !$0.isDone && $0.id != current?.id }
-            .sorted { $0.start < $1.start }
+        let data = store.aggregate
 
         NavigationStack {
             ScrollView {
                 VStack(alignment: .leading, spacing: DLSpace.xl) {
-                    header(completed: completed.count, total: tasks.count)
+                    header(done: data.doneCount, total: data.total)
 
-                    if tasks.isEmpty {
+                    if let message = store.errorMessage {
+                        errorBanner(message)
+                    }
+
+                    if data.isEmpty {
                         TodayEmptyState()
+                            .padding(.top, DLSpace.xl)
                     } else {
-                        if let current {
+                        if !data.running.isEmpty {
                             section(title: "ĐANG LÀM", accentDot: true) {
-                                DLCard {
-                                    row(for: current)
-                                }
+                                DLCard { rows(data.running) }
                             }
                         }
 
-                        if !upcoming.isEmpty {
-                            section(title: "SẮP TỚI", count: upcoming.count) {
-                                DLCard {
-                                    rows(upcoming)
-                                }
+                        if !data.overdue.isEmpty {
+                            section(title: "QUÁ HẠN", count: data.overdue.count) {
+                                DLCard { rows(data.overdue) }
                             }
                         }
 
-                        if !completed.isEmpty {
-                            section(title: "ĐÃ XONG", count: completed.count, collapsible: true) {
+                        if !data.upcoming.isEmpty {
+                            section(title: "SẮP TỚI", count: data.upcoming.count) {
+                                DLCard { rows(data.upcoming) }
+                            }
+                        }
+
+                        if !data.done.isEmpty {
+                            section(title: "ĐÃ XONG", count: data.done.count, collapsible: true) {
                                 if completedExpanded {
-                                    DLCard {
-                                        rows(completed)
-                                    }
+                                    DLCard { rows(data.done) }
                                 }
                             }
                         }
@@ -58,25 +61,62 @@ struct TodayView: View {
             }
             .background { DLColor.bg.ignoresSafeArea() }
             .safeAreaInset(edge: .bottom) {
-                Button {
-                    // P4: mở TaskEditorView
-                } label: {
-                    Label("Thêm việc", systemImage: "plus")
-                }
-                .buttonStyle(DLFloatingButtonStyle())
-                .padding(.horizontal, DLSpace.margin)
-                .padding(.bottom, DLSpace.s)
+                addButton
             }
             .toolbar(.hidden, for: .navigationBar)
+            .task {
+                await store.runClock()
+            }
+            .onReceive(NotificationCenter.default.publisher(for: .daylineDataChanged)) { _ in
+                store.load()
+            }
+            .sheet(item: $editorTarget) { target in
+                TaskEditorView(
+                    task: target.task,
+                    defaultStart: target.defaultStart,
+                    onSave: { draft in
+                        store.save(draft, editing: target.task)
+                    },
+                    onDelete: deleteAction(for: target.task)
+                )
+                .presentationDetents([.large])
+                .presentationDragIndicator(.visible)
+            }
+            .confirmationDialog(
+                "Xoá việc này?",
+                isPresented: deleteDialogBinding,
+                titleVisibility: .visible,
+                presenting: pendingDelete
+            ) { task in
+                Button("Xoá", role: .destructive) {
+                    withAnimation(.easeOut(duration: 0.2)) {
+                        store.delete(task)
+                    }
+                    pendingDelete = nil
+                }
+            } message: { task in
+                Text(task.title)
+            }
         }
     }
 
     // MARK: - Pieces
 
-    private func header(completed: Int, total: Int) -> some View {
+    private var addButton: some View {
+        Button {
+            editorTarget = EditorTarget(task: nil, defaultStart: Self.nextSlot(after: store.now))
+        } label: {
+            Label("Thêm việc", systemImage: "plus")
+        }
+        .buttonStyle(DLFloatingButtonStyle())
+        .padding(.horizontal, DLSpace.margin)
+        .padding(.bottom, DLSpace.s)
+    }
+
+    private func header(done: Int, total: Int) -> some View {
         HStack(alignment: .center) {
             VStack(alignment: .leading, spacing: DLSpace.xs) {
-                Text(DLDateText.dayTitle())
+                Text(DLDateText.dayTitle(for: store.now))
                     .font(DLFont.meta)
                     .foregroundStyle(DLColor.text2)
 
@@ -87,9 +127,24 @@ struct TodayView: View {
 
             Spacer(minLength: DLSpace.m)
 
-            ProgressRing(done: completed, total: total, size: 44, lineWidth: 3)
+            ProgressRing(done: done, total: total, size: 44, lineWidth: 3)
         }
         .padding(.top, DLSpace.m)
+    }
+
+    private func errorBanner(_ message: String) -> some View {
+        HStack(alignment: .top, spacing: DLSpace.s) {
+            Image(systemName: "exclamationmark.triangle.fill")
+                .foregroundStyle(DLColor.warning)
+
+            Text(message)
+                .font(DLFont.meta)
+                .foregroundStyle(DLColor.text2)
+                .frame(maxWidth: .infinity, alignment: .leading)
+        }
+        .padding(DLSpace.m)
+        .background(DLColor.surface)
+        .clipShape(RoundedRectangle(cornerRadius: DLRadius.card, style: .continuous))
     }
 
     private func section<Content: View>(
@@ -112,7 +167,7 @@ struct TodayView: View {
         }
     }
 
-    private func rows(_ items: [TodayTask]) -> some View {
+    private func rows(_ items: [TaskItem]) -> some View {
         ForEach(items) { task in
             row(for: task)
             if task.id != items.last?.id {
@@ -121,17 +176,40 @@ struct TodayView: View {
         }
     }
 
-    private func row(for task: TodayTask) -> some View {
+    private func row(for task: TaskItem) -> some View {
         TaskRow(
             title: task.title,
-            timeText: task.timeText,
-            state: task.state(at: .now)
+            timeText: task.displayTimeText,
+            state: task.rowState(at: store.now),
+            onSelect: {
+                editorTarget = EditorTarget(task: task, defaultStart: task.startAt ?? store.now)
+            }
         ) {
             toggle(task)
+        }
+        .contextMenu {
+            Button {
+                editorTarget = EditorTarget(task: task, defaultStart: task.startAt ?? store.now)
+            } label: {
+                Label("Sửa", systemImage: "pencil")
+            }
+
+            Button(role: .destructive) {
+                pendingDelete = task
+            } label: {
+                Label("Xoá", systemImage: "trash")
+            }
         }
     }
 
     // MARK: - Actions
+
+    private var deleteDialogBinding: Binding<Bool> {
+        Binding(
+            get: { pendingDelete != nil },
+            set: { if !$0 { pendingDelete = nil } }
+        )
+    }
 
     private func collapseCompleted() {
         withAnimation(.easeOut(duration: 0.2)) {
@@ -139,24 +217,42 @@ struct TodayView: View {
         }
     }
 
-    private func toggle(_ task: TodayTask) {
-        guard let index = tasks.firstIndex(where: { $0.id == task.id }) else { return }
+    private func deleteAction(for task: TaskItem?) -> (() -> Void)? {
+        guard let task else { return nil }
+        return { store.delete(task) }
+    }
+
+    private func toggle(_ task: TaskItem) {
         UIImpactFeedbackGenerator(style: .light).impactOccurred()
         withAnimation(.spring(response: 0.28, dampingFraction: 0.8)) {
-            tasks[index].isDone.toggle()
+            store.toggle(task)
         }
+    }
+
+    /// Mốc 5 phút kế tiếp, để việc mới không rơi vào giờ đã qua.
+    static func nextSlot(after date: Date, calendar: Calendar = .current) -> Date {
+        let base = calendar.date(bySetting: .second, value: 0, of: date) ?? date
+        let minute = calendar.component(.minute, from: base)
+        let delta = 5 - (minute % 5)
+        return calendar.date(byAdding: .minute, value: delta, to: base) ?? base
     }
 }
 
+private struct EditorTarget: Identifiable {
+    let id = UUID()
+    let task: TaskItem?
+    let defaultStart: Date
+}
+
 #Preview("Có việc") {
-    TodayView()
+    TodayView(store: TodayStore(repository: MockTaskRepository()))
 }
 
 #Preview("Trống") {
-    TodayView(tasks: [])
+    TodayView(store: TodayStore(repository: MockTaskRepository(items: [])))
 }
 
 #Preview("Dark") {
-    TodayView()
+    TodayView(store: TodayStore(repository: MockTaskRepository()))
         .preferredColorScheme(.dark)
 }

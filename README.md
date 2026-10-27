@@ -10,7 +10,7 @@ App iOS cá nhân: ghi chú + việc cần làm theo giờ trong ngày, có widg
 
 ## Trạng thái
 
-Đang ở **P2**: data layer (SwiftData + repository). UI Today hiện vẫn dùng dữ liệu mẫu — P3 sẽ nối vào repository.
+Đang ở **P3**: Today đã nối vào SwiftData (thêm/sửa/xoá việc, quá hạn, tick done). Tiếp theo: P4 editor đầy đủ + nhắc nhở.
 
 Lộ trình đầy đủ: `IMPLEMENTATION_PLAN.md`. Bộ UI đã lọc: `design/screen-inventory.md`.
 
@@ -77,6 +77,15 @@ Widget P0 hỗ trợ `accessoryRectangular` (Lock Screen) và `systemSmall` (Hom
 - Test: repository task/note, export/import, `RecurrenceRule` round-trip
 
 > Model đặt trong target app (không phải `Shared/`) để widget extension **không** link SwiftData — widget chỉ đọc snapshot JSON (P7).
+
+## Đã dựng ở P3 (Today thật)
+
+- `App/Domain/DayAggregate.swift`: chia việc theo ngày thành ĐANG LÀM / QUÁ HẠN / SẮP TỚI / ĐÃ XONG, `doneCount`/`total`; task có giờ nhưng không đặt thời lượng coi như 30 phút
+- `App/Features/Today/TodayStore.swift`: `@Observable`, tick 30 giây, tự chuyển ngày khi qua nửa đêm, nghe `.daylineDataChanged`
+- `AppRepositories`: dùng SwiftData; nếu container không mở được thì fallback mock để app vẫn chạy
+- Tick done có haptic, ring cập nhật, banner đỏ khi fetch lỗi
+- `TaskEditorView` (khung): tên, ghi chú, đặt giờ, thời lượng, ưu tiên, xoá việc; mở bằng "+" hoặc tap vào dòng
+- Xoá: nhấn giữ dòng → **Xoá** + xác nhận (chưa dùng swipe, xem `IMPLEMENTATION_PLAN.md` P3)
 
 ## Ghi chú dev
 

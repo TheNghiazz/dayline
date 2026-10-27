@@ -3,6 +3,9 @@ import SwiftData
 
 @Model
 final class TaskItem {
+    /// Thời lượng mặc định khi task có giờ nhưng không đặt `durationMinutes`.
+    static let defaultDurationMinutes = 30
+
     @Attribute(.unique) var id: UUID
     var title: String
     var detail: String?

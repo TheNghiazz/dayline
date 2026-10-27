@@ -123,11 +123,13 @@ Việc làm:
 
 ## P3 — Today thật + domain
 
-1. `DayAggregator` (nhóm ĐANG LÀM/SẮP TỚI/ĐÃ XONG, done/total, quá hạn) + test.
-2. Nối `TodayView` vào repository thật; `@Query` hoặc fetch theo ngày.
-3. **State mới:** Today trống ("Hôm nay trống" + nút thêm), task quá hạn (giờ màu `Warning`, icon `exclamationmark.circle`).
-4. Swipe: xoá, tick done (kèm haptic `UIImpactFeedbackGenerator(.light)`).
-5. Nút "+" mở sheet editor (dựng khung trước, P4 hoàn thiện).
+> Trạng thái: **code xong**, chờ CI xác nhận.
+
+1. `DayAggregate` (nhóm ĐANG LÀM/QUÁ HẠN/SẮP TỚI/ĐÃ XONG, done/total) + `TodayStore` (tick 30s, tự sang ngày mới) + test.
+2. Nối `TodayView` vào repository thật qua `AppRepositories` (SwiftData, fallback mock).
+3. **State:** Today trống, task quá hạn (giờ `Warning`, icon `exclamationmark.circle`), banner lỗi khi fetch fail.
+4. Xoá: nhấn giữ → menu Sửa/Xoá + xác nhận. **Lệch kế hoạch:** không dùng swipe vì row nằm trong card của `ScrollView` (swipe thật cần `List`, sẽ làm vỡ layout card). Sẽ cân nhắc lại ở P9.
+5. Nút "+" và tap vào row mở `TaskEditorView` (tên, ghi chú, giờ, thời lượng, ưu tiên); P4 thêm lặp lại + nhắc nhở.
 
 **Nghiệm thu:** [ ] tick done → task chuyển sang ĐÃ XONG + ring tăng, [ ] xoá hết → empty state, [ ] task giờ đã qua hiển thị đúng.
 

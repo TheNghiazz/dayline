@@ -1,4 +1,5 @@
 import Foundation
+import SwiftData
 
 /// Repository giả cho preview/UI test: cùng protocol, không cần SwiftData.
 @MainActor

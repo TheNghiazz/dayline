@@ -13,6 +13,7 @@ struct TaskRow: View {
     let title: String
     let timeText: String
     let state: TaskRowState
+    var onSelect: (() -> Void)? = nil
     let onToggle: () -> Void
 
     var body: some View {
@@ -56,6 +57,8 @@ struct TaskRow: View {
         .padding(.vertical, DLSpace.m)
         .frame(minHeight: 56)
         .opacity(state == .done ? 0.55 : 1)
+        .contentShape(Rectangle())
+        .onTapGesture { onSelect?() }
     }
 
     private var checkbox: some View {
