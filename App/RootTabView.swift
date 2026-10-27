@@ -11,7 +11,7 @@ struct RootTabView: View {
 
     var body: some View {
         TabView(selection: $selection) {
-            TodayPlaceholderView()
+            TodayView()
                 .tabItem { Label("Hôm nay", systemImage: "clock") }
                 .tag(Tab.today)
 
@@ -23,6 +23,7 @@ struct RootTabView: View {
                 .tabItem { Label("Cài đặt", systemImage: "gearshape") }
                 .tag(Tab.settings)
         }
+        .tint(DLColor.accent)
     }
 }
 

@@ -84,6 +84,8 @@ Việc làm:
 
 ## P1 — Theme + components + Today tĩnh
 
+> Trạng thái: **code xong**, chờ CI xác nhận build/screenshot.
+
 **Fix:** #1 avatar→ring, #2 ghost title, #3 bỏ tab Thống kê, #4 ép SF Pro, #5 chốt lệch spec.
 
 1. `Shared/Theme.swift` từ DESIGN.md:

@@ -49,9 +49,9 @@ design/                     # design system + inventory + ghi chú lệch UI
 
 Giới hạn Apple ID free: app hết hạn sau **7 ngày**, tối đa **3 app**, **10 App ID mới/tuần** (app + widget = 2). Dùng AltServer/SideStore để tự refresh khi cùng Wi-Fi.
 
-## P0 kiểm tra gì
+## P0/P1 kiểm tra gì
 
-Mở app → tab **Hôm Nay** hiển thị trạng thái App Group; mở **Cài đặt → Chẩn đoán** để xem container path và ghi lại probe.
+App mở vào tab **Hôm Nay** (timeline thật theo ảnh Stitch). Trạng thái App Group nằm ở **Cài đặt → Chẩn đoán** — xem container path và ghi lại probe.
 
 | Kết quả | Nghĩa |
 |---|---|
@@ -59,6 +59,14 @@ Mở app → tab **Hôm Nay** hiển thị trạng thái App Group; mở **Cài 
 | `App Group: Không khả dụng` + widget hiện "CHƯA ĐỒNG BỘ" | Đúng như dự kiến với Apple ID free. App vẫn dùng bình thường; widget thật sẽ cần TK $99 (P7 quyết định) |
 
 Widget P0 hỗ trợ `accessoryRectangular` (Lock Screen) và `systemSmall` (Home Screen).
+
+## Đã dựng ở P1
+
+- `Shared/Theme.swift`: token màu (light/dark), typography, spacing, radius từ `design/design-system.md`
+- `Shared/Formatters.swift`: tiêu đề ngày + giờ theo locale
+- `App/DesignSystem/`: `ProgressRing`, `TaskRow` (4 state: current/upcoming/done/overdue), `SectionHeader`, `DLCard`, `DLDivider`, `TodayEmptyState`, `DLFloatingButtonStyle`, `DLPrimaryButtonStyle`
+- `App/Features/Today/`: timeline chia ĐANG LÀM / SẮP TỚI / ĐÃ XONG (thu gọn được), ring tiến độ, tick done có haptic, empty state, nút "+ Thêm việc"
+- Bỏ avatar, bỏ chữ lặp, bỏ tab Thống kê theo `design/screen-inventory.md`
 
 ## Ghi chú dev
 
